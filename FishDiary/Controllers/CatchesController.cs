@@ -10,6 +10,7 @@ using FishDiary.Models;
 
 namespace FishDiary.Controllers
 {
+    [Authorize(Roles="User")]
     public class CatchesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -50,6 +51,7 @@ namespace FishDiary.Controllers
         {
             if (ModelState.IsValid)
             {
+                //@catch.User
                 db.Catches.Add(@catch);
                 db.SaveChanges();
                 return RedirectToAction("Index");
